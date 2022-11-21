@@ -19,7 +19,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final SuccessUserHandler successUserHandler;
     private final UserService userServiceImp;
 
-    @Autowired
     public WebSecurityConfig(SuccessUserHandler successUserHandler, UserService userServiceImp) {
         this.successUserHandler = successUserHandler;
         this.userServiceImp = userServiceImp;

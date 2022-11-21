@@ -13,9 +13,8 @@ import java.security.Principal;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    UserServiceImpl userService;
+    private final UserServiceImpl userService;
 
-    @Autowired
     public UserController(UserServiceImpl userService) {
         this.userService = userService;
     }
