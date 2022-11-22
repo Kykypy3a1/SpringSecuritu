@@ -14,7 +14,7 @@ import java.util.List;
 public class UserRepositoryImpl implements UserRepository {
 
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     @Override
     public User findByUsername(String username) {
