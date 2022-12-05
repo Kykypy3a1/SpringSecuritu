@@ -40,9 +40,9 @@ public class UserServiceImpl implements UserService {
         User newUser = new User();
         Set<Role> roles;
         if (role.equals("ROLE_ADMIN")) {
-            roles = Set.of(new Role(user.getId(), "ROLE_USER"), new Role(user.getId(), "ROLE_ADMIN"));
+            roles = Set.of(new Role(2, "ROLE_USER"), new Role(1, "ROLE_ADMIN"));
         } else {
-            roles = Set.of(new Role(user.getId(), "ROLE_USER"));
+            roles = Set.of(new Role(2, "ROLE_USER"));
         }
         newUser.setName(user.getName());
         newUser.setLastName(user.getLastName());
@@ -58,9 +58,9 @@ public class UserServiceImpl implements UserService {
     public void edit(User user, Integer id, String role) {
         Set<Role> rolesToChange;
         if (role.equals("ROLE_ADMIN")) {
-            rolesToChange = Set.of(new Role(1, "ROLE_USER"), new Role(2, "ROLE_ADMIN"));
+            rolesToChange = Set.of(new Role(2, "ROLE_USER"), new Role(1, "ROLE_ADMIN"));
         } else {
-            rolesToChange = Set.of(new Role(1, "ROLE_USER"));
+            rolesToChange = Set.of(new Role(2, "ROLE_USER"));
         }
 
         User changedUser = new User();
@@ -104,16 +104,16 @@ public class UserServiceImpl implements UserService {
     }
 
     //Добавление пользователя для теста функционала
-    @PostConstruct
-    public User createTestAdmin() {
-        if (userRepository.findByUsername("admin") == null) {
-            User user = new User("admin", "admin", 22);
-            user.setId(1);
-            user.setPassword(passwordEncoder.encode("admin"));
-            user.addRole(new Role(user.getId(), "ROLE_ADMIN"));
-            user.addRole(new Role(user.getId(), "ROLE_USER"));
-            return userRepository.save(user);
-        }
-        return null;
-    }
+   //@PostConstruct
+   //public User createTestAdmin() {
+   //    if (userRepository.findByUsername("admin") == null) {
+   //        User user = new User("admin", "admin", 22);
+   //        user.setId(1);
+   //        user.setPassword(passwordEncoder.encode("admin"));
+   //        user.addRole(new Role(user.getId(), "ROLE_ADMIN"));
+   //        user.addRole(new Role(user.getId(), "ROLE_USER"));
+   //        return userRepository.save(user);
+   //    }
+   //    return null;
+   //}
 }
