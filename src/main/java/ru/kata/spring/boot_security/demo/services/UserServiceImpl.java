@@ -104,16 +104,16 @@ public class UserServiceImpl implements UserService {
     }
 
     //Добавление пользователя для теста функционала
-   @PostConstruct
-   public User createTestAdmin() {
-       if (userRepository.findByUsername("admin") == null) {
-           User user = new User("admin", "admin", 22);
-           user.setId(1);
-           user.setPassword(passwordEncoder.encode("admin"));
-           user.addRole(new Role(user.getId(), "ROLE_ADMIN"));
-           user.addRole(new Role(user.getId(), "ROLE_USER"));
-           return userRepository.save(user);
-       }
-       return null;
-   }
+    @PostConstruct
+    public User createTestAdmin() {
+        if (userRepository.findByUsername("admin") == null) {
+            User user = new User("admin", "admin", 22);
+            user.setId(1);
+            user.setPassword(passwordEncoder.encode("admin"));
+            user.addRole(new Role(user.getId(), "ROLE_ADMIN"));
+            user.addRole(new Role(user.getId(), "ROLE_USER"));
+            return userRepository.save(user);
+        }
+        return null;
+    }
 }
